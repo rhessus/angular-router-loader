@@ -46,6 +46,8 @@ module.exports = function(source, sourcemap) {
 
     moduleName += (aot ? factorySuffix : '');
 
+    filePath = filePath.replace(/\{\{aot\:(.+?)\}\}/, (aot ? '$1' : ''));
+
     // update the file path for non-ngfactory files
     if (aot && filename.substr(-9) !== moduleSuffix.substr(-9) && isRelativePath) {
       // find the relative dir to file from the genDir
